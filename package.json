@@ -1,0 +1,24 @@
+{
+  "name": "coinbase-miner",
+  "version": "0.1.0",
+  "description": "Mine coinbase data",
+  "main": "index.js",
+  "dependencies": {
+    "ws": "^0.7.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": "node src/Miner.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/trevorbernard/coinbase-miner"
+  },
+  "author": "Trevor Bernard",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/trevorbernard/coinbase-miner/issues"
+  },
+  "homepage": "https://github.com/trevorbernard/coinbase-miner"
+}
