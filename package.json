@@ -4,9 +4,12 @@
   "description": "Mine coinbase data",
   "main": "index.js",
   "dependencies": {
+    "request": "^2.54.0",
     "ws": "^0.7.1"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "node-rest-client": "^1.5.1"
+  },
   "scripts": {
     "start": "node src/Miner.js",
     "test": "echo \"Error: no test specified\" && exit 1"
