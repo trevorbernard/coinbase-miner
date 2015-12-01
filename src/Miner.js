@@ -2,17 +2,28 @@ var WebSocket = require("ws");
 var ws = new WebSocket("wss://ws-feed.exchange.coinbase.com/");
 var Client = require('node-rest-client').Client;
 
-var apiUrl = "http://staging.emax.io:9000";
+//var apiUrl = "http://staging.emax.io:9000";
+var apiUrl = "http://localhost:9000";
 
 var client = new Client();
 
 var orders = {};
 var createOrder = function (data) {
-  return {
-    side: data.side === 'sell' ? 'ask' : 'bid',
-    price: data.price,
-    quantity: data.size
-  };
+  if(data.order_type === 'limit') {
+    return {
+      type: 'limit',
+      side: data.side === 'sell' ? 'ask' : 'bid',
+      price: data.price,
+      quantity: data.size
+    };
+  } else if(data.order_type === 'market') {
+    return {
+      type: 'market',
+      side: data.side === 'sell' ? 'ask' : 'bid',
+      quantity: data.size
+    };
+  }
+  return {}
 };
 
 ws.onopen = function () {
