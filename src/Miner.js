@@ -12,17 +12,19 @@ var createOrder = function (data) {
   if(data.order_type === 'limit') {
     return {
       type: 'limit',
+      user_id: 'api',
       side: data.side === 'sell' ? 'ask' : 'bid',
       price: data.price,
       quantity: data.size
     };
-  } else if(data.order_type === 'market') {
-    return {
-      type: 'market',
-      side: data.side === 'sell' ? 'ask' : 'bid',
-      quantity: data.size
-    };
   }
+  // else if(data.order_type === 'market') {
+  //   return {
+  //     type: 'market',
+  //     side: data.side === 'sell' ? 'ask' : 'bid',
+  //     quantity: data.size
+  //   };
+  // }
   return {}
 };
 
