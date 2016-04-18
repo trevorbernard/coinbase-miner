@@ -2,10 +2,13 @@ var WebSocket = require("ws");
 var ws = new WebSocket("wss://ws-feed.exchange.coinbase.com/");
 var Client = require('node-rest-client').Client;
 
-//var apiUrl = "http://staging.emax.io:9000";
-var apiUrl = "http://localhost:9000";
-
-var client = new Client();
+//var apiUrl = "http://staging.emax.io:9000/products/BTC-USD";
+var apiUrl = "http://localhost:9000/products/BTC-USD";
+var opts = {
+  user:"api",
+  password:"3aa63351-2169-4a6f-b1db-7968195ce2d1"
+};
+var client = new Client(opts);
 
 var orders = {};
 var createOrder = function (data) {
