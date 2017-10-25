@@ -2,12 +2,15 @@ var WebSocket = require("ws");
 var ws = new WebSocket("wss://ws-feed.gdax.com");
 var Client = require('node-rest-client').Client;
 
-//var apiUrl = "https://api.sandbox.braveno.com/products/ETH-BTC";
-var apiUrl = "http://localhost:9000/products/ETH-BTC";
+var apiUrl = "https://api.sandbox.braveno.com/products/ETH-BTC";
+var walletId = '__wallet_id__';
+var accountId = '__account_id__';
+
 var opts = {
-  user:"3aa63351-2169-4a6f-b1db-7968195ce2d1",
-  password:"changeit"
+  user:'__api_key__',
+  password:'__api_secret__'
 };
+
 var client = new Client(opts);
 
 var orders = {};
@@ -18,17 +21,10 @@ var createOrder = function (data) {
       side: data.side === 'sell' ? 'ask' : 'bid',
       price: data.price,
       quantity: data.size,
-      wallet_id: "2595802f-427c-4f69-9111-72118074545f",
-      account_id: "0bdf53b6-d1f5-46da-b362-8baf3078c3a3"
+      wallet_id: walletId,
+      account_id: accountId
     };
   }
-  // else if(data.order_type === 'market') {
-  //   return {
-  //     type: 'market',
-  //     side: data.side === 'sell' ? 'ask' : 'bid',
-  //     quantity: data.size
-  //   };
-  // }
   return {}
 };
 
@@ -74,4 +70,3 @@ ws.onmessage = function (evt) {
 
 ws.onclose = function () {
 };
-
